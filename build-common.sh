@@ -339,7 +339,7 @@ if [ "x$uname_string" == "xlinux" ] ; then
     HOST_NATIVE="$host_arch"-linux-gnu
     READLINK=readlink
     JOBS=`grep ^processor /proc/cpuinfo|wc -l`
-    GCC_CONFIG_OPTS_LCPP="--with-host-libstdcxx=-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm"
+    GCC_CONFIG_OPTS_LCPP="--with-host-libstdcxx=-static-libgc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm"
     TAR=tar
     MD5="md5sum -b"
     PACKAGE_NAME_SUFFIX=linux
@@ -350,7 +350,7 @@ elif [ "x$uname_string" == "xdarwin" ] ; then
 # Disable parallel build for mac as we will randomly run into "Permission denied" issue.
 #    JOBS=`sysctl -n hw.ncpu`
     JOBS=1
-    GCC_CONFIG_OPTS_LCPP="--with-host-libstdcxx=-static-libgcc -Wl,-lstdc++ -lm"
+    GCC_CONFIG_OPTS_LCPP="--with-host-libstdcxx= -Wl,-lstdc++ -lm"
     TAR=gnutar
     MD5="md5 -r"
     PACKAGE_NAME_SUFFIX=mac
