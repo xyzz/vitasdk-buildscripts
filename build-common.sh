@@ -351,7 +351,7 @@ elif [ "x$uname_string" == "xdarwin" ] ; then
 #    JOBS=`sysctl -n hw.ncpu`
     JOBS=1
     GCC_CONFIG_OPTS_LCPP="--with-host-libstdcxx= -Wl,-lstdc++ -lm"
-    TAR=gnutar
+    TAR=tar
     MD5="md5 -r"
     PACKAGE_NAME_SUFFIX=mac
 else
