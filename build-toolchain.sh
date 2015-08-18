@@ -534,8 +534,6 @@ cp $ROOT/$LICENSE_FILE $INSTALLDIR_NATIVE_DOC/
 copy_dir_clean $SRCDIR/$SAMPLES $INSTALLDIR_NATIVE/share/gcc-$TARGET/$SAMPLES
 ln -s $INSTALLDIR_NATIVE $INSTALL_PACKAGE_NAME
 ${TAR} cjf $PACKAGEDIR/$PACKAGE_NAME_NATIVE.tar.bz2   \
-    --owner=0                               \
-    --group=0                               \
     --exclude=host-$HOST_NATIVE             \
     --exclude=host-$HOST_MINGW              \
     $INSTALL_PACKAGE_NAME/$TARGET     \
