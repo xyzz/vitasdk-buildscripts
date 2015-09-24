@@ -249,10 +249,8 @@ make install
 cd ..
 mkdir build-vita-toolchain && cd build-vita-toolchain
 cmake $SRCDIR/$VITA_TOOLCHAIN \
-	-DJansson_INCLUDE_DIR=$BUILDDIR_NATIVE/vita-toolchain/install/include/ \
-	-DJansson_LIBRARY=$BUILDDIR_NATIVE/vita-toolchain/install/lib/libjansson.a \
-	-Dlibelf_INCLUDE_DIR=$BUILDDIR_NATIVE/vita-toolchain/install/include/ \
-	-Dlibelf_LIBRARY=$BUILDDIR_NATIVE/vita-toolchain/install/lib/libelf.a \
+	-DINCLUDE_DIR=$BUILDDIR_NATIVE/vita-toolchain/install/include/ \
+	-DLINK_DIR=$BUILDDIR_NATIVE/vita-toolchain/install/lib/ \
 	-DUSE_BUNDLED_ENDIAN_H=ON \
 	-DCMAKE_INSTALL_PREFIX=$INSTALLDIR_NATIVE \
 	$DEFAULT_JSON
