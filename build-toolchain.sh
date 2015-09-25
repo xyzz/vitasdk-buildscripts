@@ -82,7 +82,7 @@ skip_mingw32=no
 DEBUG_BUILD_OPTIONS=
 is_ppa_release=no
 is_native_build=yes
-skip_manual=no
+skip_manual=yes
 skip_steps=
 skip_gdb_with_python=no
 skip_mingw32_gdb_with_python=no
@@ -333,6 +333,7 @@ $SRCDIR/$GCC/configure --target=$TARGET \
     ${GCC_CONFIG_OPTS}                              \
     "${GCC_CONFIG_OPTS_LCPP}"                              \
     "--with-pkgversion=$PKGVERSION" \
+    CXXFLAGS="-g -O2 -fbracket-depth=2048" CFLAGS_FOR_TARGET="-O2" CXXFLAGS_FOR_TARGET="-O2" \
     ${MULTILIB_LIST}
 
 make -j$JOBS all-gcc
@@ -425,6 +426,7 @@ $SRCDIR/$GCC/configure --target=$TARGET \
     $GCC_CONFIG_OPTS                                \
     "${GCC_CONFIG_OPTS_LCPP}"                              \
     "--with-pkgversion=$PKGVERSION" \
+    CXXFLAGS="-g -O2 -fbracket-depth=2048" CFLAGS_FOR_TARGET="-O2" CXXFLAGS_FOR_TARGET="-O2" \
     ${MULTILIB_LIST}
 
 # Passing USE_TM_CLONE_REGISTRY=0 via INHIBIT_LIBC_CFLAGS to disable
@@ -535,8 +537,6 @@ cp $ROOT/$LICENSE_FILE $INSTALLDIR_NATIVE_DOC/
 copy_dir_clean $SRCDIR/$SAMPLES $INSTALLDIR_NATIVE/share/gcc-$TARGET/$SAMPLES
 ln -s $INSTALLDIR_NATIVE $INSTALL_PACKAGE_NAME
 ${TAR} cjf $PACKAGEDIR/$PACKAGE_NAME_NATIVE.tar.bz2   \
-    --owner=0                               \
-    --group=0                               \
     --exclude=host-$HOST_NATIVE             \
     --exclude=host-$HOST_MINGW              \
     $INSTALL_PACKAGE_NAME/$TARGET     \
